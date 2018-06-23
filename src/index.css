@@ -1,0 +1,15 @@
+.work{
+    border-style: solid;
+    background-color: yellow;
+    padding: 10px;
+    margin: 10px;
+}
+
+.completed{
+    background-color: red;
+}
+.acting{
+    background-color: yellow;
+}
+
+
