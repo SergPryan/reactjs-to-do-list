@@ -11,7 +11,7 @@ class Task extends Component{
         if(item.name===undefined) { item.name='default name' }
         if(item.description===undefined) { item.description='default description' }
         if(item.completed===undefined) { item.completed=false }
-        this.state = {completed: item.completed, description: item.description, name: item.name, rating: item.rating,id:item.id,dateCompleted: item.dateCompleted};
+        this.state = {completed: item.completed, description: item.description, name: item.name, rating: item.rating,id:item.id,dateCompleted: item.dateCompleted,dateEnded:item.dateEnded};
     }
 
     updateTask(){
@@ -19,7 +19,7 @@ class Task extends Component{
     }
 
     completedChange(){
-        this.setState({completed: !this.state.completed, dateCompleted: Date.now()});
+        this.setState({completed: !this.state.completed, dateCompleted: new Date().toISOString()});
         if(this.state.completed === true){
             this.setState({dateCompleted: ''});
         }
@@ -65,6 +65,7 @@ class Task extends Component{
                     <option value={2}>Very Important</option>
                 </select>
             </p>
+            <p>Date ended: {this.state.dateEnded}</p>
             <p>Date completion: {this.state.dateCompleted}</p>
             <p>
                 <button onClick={this.completedChange.bind(this)}>Mark as Executed</button>

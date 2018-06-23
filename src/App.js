@@ -16,9 +16,11 @@ class App extends Component {
         const description = this.inputDescription.value;
         const rating = this.state.rating;
         const id = this.props.counterTask;
-        this.props.onAddTask(id,name, description,rating);
+        const dateEnded = this.inputDateEnded.value;
+        this.props.onAddTask(id,name, description,rating,dateEnded);
         this.inputDescription.value = '';
         this.inputName.value = '';
+        this.inputDateEnded.value = null;
     }
 
     filterAll() {
@@ -53,7 +55,7 @@ class App extends Component {
                         <option value={2}>Very Important</option>
                     </select>
                     <br/>
-                    Date ended: <input type="date"/>
+                    Date ended: <input type="date" ref={(input) => {this.inputDateEnded = input}}/>
                     <br/>
                     <button onClick={this.addTask.bind(this)}>Add task</button>
                 </div>
@@ -79,8 +81,8 @@ export default connect(
             state.filterTask === null || task.rating === state.filterTask)),
         counterTask: state.counterTask}),
     dispatch => ({
-        onAddTask: (id,name, description,rating) => {
-            dispatch({type: 'ADD_TASK', payload: {name: name, description: description, rating: rating,id: id}});
+        onAddTask: (id,name, description,rating,dateEnded) => {
+            dispatch({type: 'ADD_TASK', payload: {name: name, description: description, rating: rating,id: id,dateEnded:dateEnded}});
         },
         onFilterTask: (rating) => {
             dispatch({type: 'FILTER_TASK', payload: rating})
