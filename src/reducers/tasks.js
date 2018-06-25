@@ -1,8 +1,6 @@
-let counterTask = 0;
-
 function updateObjectInArray(array, action) {
-    return array.map( (item, index) => {
-        if(index !== action.payload.id) {
+    return array.map( (item) => {
+        if(item.id !== action.payload.id) {
             // This isn't the item we care about - keep it as-is
             return item;
         }
@@ -16,7 +14,6 @@ function updateObjectInArray(array, action) {
 
 export function tasks(state=[], action) {
     if (action.type === 'ADD_TASK') {
-        action.payload.id=counterTask++;
         return[
             ...state,
             action.payload

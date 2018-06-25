@@ -5,11 +5,11 @@
     margin: 10px;
 }
 
-.completed{
-    background-color: red;
+div .completed{
+    background-color: green;
 }
-.acting{
-    background-color: yellow;
+.overdue{
+    background-color: red;
 }
 
 
